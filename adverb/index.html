@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdVerb: Visually Guided Audio Dereverberation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <!-- <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a> -->
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div> -->
+    <!-- </div> -->
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AdVerb: Visually Guided Audio Dereverberation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://schowdhury671.github.io/">Sanjoy Chowdhury</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://sreyan88.github.io/">Sreyan Ghosh</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://subhrajyotidasgupta.github.io/">Subhrajyoti Dasgupta</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://anton-jeran.github.io/antonjeran.github.io/">Anton Ratnarajah</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://utkarsh4430.github.io/">Utkarsh Tyagi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.umd.edu/people/dmanocha">Dinesh Manocha</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Maryland, College Park &emsp;</span>
+            <span class="author-block"><sup>2</sup>Mila and Université de Montréal</span>
+            <br><br>
+            <span class="author-block"><b>[ ICCV 2023 ]</b></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2308.12370"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2308.12370"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=dZuR-pZ9uM0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/title_page.png">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">AdVerb</span>  leverages visual cues of the environment to estimate 
+        clean audio from reverberant audio.
+        <br>
+        E.g - Given a reverberant sound produced in a large hall, our
+        model attempts to remove the reverb effect to predict the
+        anechoic or clean audio.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present <span class="dnerf">AdVerb</span>, a novel audio-visual dereverberation 
+            framework that uses visual
+            cues in addition to the reverberant sound to estimate clean audio. Although audio-only
+            dereverberation is a well-studied problem, our approach incorporates the complementary
+            visual modality to perform audio dereverberation. Given an image of the environment where
+            the reverberated sound signal has been recorded, <span class="dnerf">AdVerb</span> 
+            employs a novel geometry-aware
+            cross-modal transformer architecture that captures scene geometry and audio-visual 
+            cross-modal relationship to generate a complex ideal ratio mask, which, when applied 
+            to the reverberant audio predicts the clean sound. The effectiveness of our method is 
+            demonstrated through extensive quantitative and qualitative evaluations. Our approach 
+            significantly outperforms traditional audio-only and audio-visual baselines on three 
+            downstream tasks: speech enhancement, speech recognition, and speaker verification, with 
+            relative improvements in the range of 18% - 82% on the LibriSpeech test-clean set. We also 
+            achieve highly satisfactory RT60 error scores on the AVSpeech dataset.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width:100%; height:800px; src="https://www.youtube.com/embed/dZuR-pZ9uM0?si=p7QnL7CV7S-sPvfS" 
+          title="AdVerb Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Architecture</h2>
+        <img src="static/images/architecture.png">
+        <div class="content has-text-centered">
+          Overview of <span class="dnerf">AdVerb</span>: It estimates clean source audio from 
+          a reverberant speech signal leveraging two primary components: <br>1) The visual stream 
+          processing path comprises a HorizonNet-based backbone to obtain 1D feature
+          sequences, which are subsequently passed to the cross-modal geometry-aware attention 
+          subnetwork. 2) The audio processing module applies STFT to get 2D spectrograms 
+          which are fed to the cross-modal encoder. The cross-attention subnetwork powered by 
+          geometry-aware (Shifted) Window Blocks, Panoptic Blocks, and Relative Position Embedding 
+          generates a complex ideal ratio mask.
+        </div>
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    
+    <h2 class="title is-3">Results</h2>
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <img src="static/images/res_sim_1.png">
+          <audio controls>
+            <source src="static/audios/21.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <br>
+          <div class="content has-text-centered">Reverberant Audio</div>
+          <audio controls>
+            <source src="static/audios/22.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <br>
+          <div class="content has-text-centered"><span class="dnerf">AdVerb</span> Output</div>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="static/images/res_sim_2.png">
+            <audio controls>
+              <source src="static/audios/23.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+            <br>
+            <div class="content has-text-centered">Reverberant Audio</div>
+            <audio controls>
+              <source src="static/audios/24.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+            <br>
+            <div class="content has-text-centered"><span class="dnerf">AdVerb</span> Output</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <img src="static/images/res_real_1.png">
+          <audio controls>
+            <source src="static/audios/25.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+          <br>
+          <div class="content has-text-centered">Reverberant Audio</div>
+          <audio controls>
+            <source src="static/audios/26.wav" type="audio/wav">
+          Your browser does not support the audio element.
+          </audio>
+          <br>
+          <div class="content has-text-centered"><span class="dnerf">AdVerb</span> Output</div>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="static/images/res_real_2.png">
+            <audio controls>
+              <source src="static/audios/27.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+            <br>
+            <div class="content has-text-centered">Reverberant Audio</div>
+            <audio controls>
+              <source src="static/audios/28.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+            <br>
+            <div class="content has-text-centered"><span class="dnerf">AdVerb</span> Output</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">GradCAM Visualizations</h2>
+
+        <img src="static/images/GradCAM.png">
+        <div class="content has-text-centered">
+          Grad-CAM visualization of activated regions. Our model attends to regions that cause 
+          heavy reverberation effects.
+        </div>
+
+        <img src="static/images/GradCAM_failure.png">
+        <div class="content has-text-centered">
+          Some failure cases. The ✓ denotes the regions with correct activation while ✗ spurious detections.
+        </div>
+
+        
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{chowdhury2023adverb,
+    title={AdVerb: Visually Guided Audio Dereverberation},
+    author={Chowdhury, Sanjoy and Ghosh, Sreyan and Subhrajyoti, Dasgupta and Ratnarajah, Anton and Tyagi, Utkarsh and Manocha, Dinesh},
+    journal={ICCV},
+    year={2023}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="static/doc/adverb_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template Courtesy: <a href="https://github.com/nerfies/nerfies.github.io">Nerfies Website</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
